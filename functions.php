@@ -20,3 +20,10 @@ add_action('after_setup_theme','volnamusic_setup_theme');
 
 
 
+function get_category_name() {
+    $categories = get_the_category(); // بازگرداندن آرایه اطلاعات دسته بندی‌های پست
+    if ( ! empty( $categories ) ) { // چک کردن آیا آرایه خالی نیست
+        return $categories[0]->name; // برگرداندن نام اولین دسته بندی
+    }
+    return false; // اگر دسته بندی وجود نداشته باشد، برگرداندن false
+}

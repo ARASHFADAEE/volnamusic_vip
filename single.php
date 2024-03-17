@@ -3,8 +3,36 @@
 <!-- end header -->
 
 <!-- sidebar -->
-<?php get_template_part( '/partials/sidebar/sidebar', 'sidebar' )?>
+<?php get_template_part('/partials/sidebar/sidebar', 'sidebar') ?>
 <!-- end sidebar -->
+
+
+<!-- player -->
+<div class="player">
+    <div class="player__cover">
+        <img src="<?php the_post_thumbnail_url() ?>" alt="">
+    </div>
+
+    <div class="player__content">
+        <span class="player__track"><b class="player__title"><?php echo esc_html(get_field('short-title')); ?></b> – <span class="player__artist"><?php echo get_category_name() ?></span></span>
+        <audio src="<?
+        if(get_field('is_single')){
+            echo esc_attr(get_field('320-link'));
+        }else{
+            $song_url = get_sub_field('song-url');
+            echo $song_url;
+
+        }
+        
+        
+        ?>" id="audio" controls></audio>
+    </div>
+</div>
+
+<button class="player__btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z" />
+    </svg>موزیک پلیر</button>
+<!-- end player -->
 
 <!-- main content -->
 <main class="main">
@@ -13,9 +41,9 @@
             <!-- breadcrumb -->
             <div class="col-12">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb__item"><a href="<?php echo get_home_url()?>">صفحه اصلی</a></li>
-                    <li class="breadcrumb__item"><a href="#"><?php the_category()?></a></li>
-                    <li class="breadcrumb__item breadcrumb__item--active"><?php the_title();?></li>
+                    <li class="breadcrumb__item"><a href="<?php echo get_home_url() ?>">صفحه اصلی</a></li>
+                    <li class="breadcrumb__item"><a href="#"><?php the_category() ?></a></li>
+                    <li class="breadcrumb__item breadcrumb__item--active"><?php the_title(); ?></li>
                 </ul>
             </div>
             <!-- end breadcrumb -->
@@ -23,74 +51,95 @@
             <!-- title -->
             <div class="col-12">
                 <div class="main__title main__title--page">
-                    <h1><?php the_title();?></h1>
+                    <h1><?php the_title(); ?></h1>
                 </div>
             </div>
             <!-- end title -->
             <?php
-if ( have_posts() ) :
-    while ( have_posts() ) : the_post(); ?>
+            if (have_posts()) :
+                while (have_posts()) : the_post(); ?>
 
-?>
-<?php
-if (get_field('is_single')) {
-?>
-            <div class="col-12">
-                <div class="release">
-                    <div class="release__content">
-                        <div class="release__cover">
-                            <!-- <img src="http://localhost/music/wp-content/uploads/2024/03/IMG_20240122_190404_874_resize_59-300x300.jpg" alt=""> -->
-                            <?php the_post_thumbnail([300,300])?>
-                        </div>
-                        <div class="release__stat">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z"></path>
-                                </svg>تک آهنگ</span>
-                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z"></path>
-                                </svg> 5000</span>
-                        </div>
+                    ?>
+                    <?php
+                    if (get_field('is_single')) {
+                    ?>
+                        <div class="col-12">
+                            <div class="release">
+                                <div class="release__content">
+                                    <div class="release__cover">
+                                        <?php the_post_thumbnail([300, 300]) ?>
+                                    </div>
+                                    <div class="release__stat">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z"></path>
+                                            </svg>تک آهنگ</span>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z"></path>
+                                            </svg> 5000</span>
+                                    </div>
 
-                    </div>
+                                </div>
 
-                    <div class="release__list" data-scrollbar="true" tabindex="-1" style="overflow: hidden; outline: none;">
-                        <div class="scroll-content">
-                            <div class="scroll-content">
-                                <div class="scroll-content">
+                                <div class="release__list" data-scrollbar="true" tabindex="-1" style="overflow: hidden; outline: none;">
                                     <div class="scroll-content">
-                                        <li class="single-item">
-                                            <a data-playlist="" data-title="1. بی معرفت" data-artist="بهنام بانی" data-img="img/covers/cover.svg" href="<?php echo esc_attr( get_field('320-link') ); ?>" class="single-item__cover">
-                                                <img src="<?php the_post_thumbnail_url() ?>" alt="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                    <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"></path>
-                                                </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                    <path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"></path>
-                                                </svg>
-                                            </a>
-                                            <div class="single-item__title">
-                                                <h4><a href="#"><?php echo esc_html( get_field('short-title') ); ?></a></h4>
-                                                <span><a href="#"><?php the_category()?></a></span>
-                                            </div>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                    <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
-                                                </svg>
-                                            </a>
-                                            <a class="single-item__export" href="#download">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                    <path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path>
-                                                </svg>
-                                            </a>
-                                            <span class="single-item__time"><?php echo esc_html( get_field('song-time') ); ?></span>
-                                        </li>
-                                        <audio class="audio_custom_single" controls="" style="width: 100%;">
-                                            <source src="<?php echo esc_attr( get_field('320-link') ); ?>" type="audio/mpeg">
-                                            مروگر شما پلیر را ساپورت نمیکنه
-                                        </audio>
-                                        <a href="<?php echo esc_attr( get_field('128-link') ); ?>" id="download" class="release__buy open-modal">دانلود اهنگ با کیفیت 128</a>
-                                        <a href="<?php echo esc_attr( get_field('320-link') ); ?>" class="release__buy open-modal">دانلود اهنگ با کیفیت 320</a>
+                                        <div class="scroll-content">
+                                            <div class="scroll-content">
+                                                <div class="scroll-content">
+                                                    <li class="single-item">
+                                                        <?php $single_track_name=get_field('short-title') ?>
+                                                        <a data-playlist="" data-title="<?php echo esc_html($single_track_name); ?>" data-artist="<?php echo get_category_name()?>" data-img="<?php the_post_thumbnail_url()?>" href="<?php echo esc_attr(get_field('320-link')); ?>" class="single-item__cover">
+                                                            <img src="<?php the_post_thumbnail_url() ?>" alt="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                                <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"></path>
+                                                            </svg>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                                <path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"></path>
+                                                            </svg>
+                                                        </a>
+                                                        <div class="single-item__title">
+                                                            <h4><a href="#"><?php echo esc_html($single_track_name); ?></a></h4>
+                                                            <span><a href="#"><?php the_category() ?></a></span>
+                                                        </div>
+                                                        <a href="#">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                                <path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path>
+                                                            </svg>
+                                                        </a>
+                                                        <a class="single-item__export" href="#download">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                                <path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path>
+                                                            </svg>
+                                                        </a>
+                                                        <span class="single-item__time"><?php echo esc_html(get_field('song-time')); ?></span>
+                                                    </li>
+                                                    <audio class="audio_custom_single" controls="" style="width: 100%;">
+                                                        <source src="<?php echo esc_attr(get_field('320-link')); ?>" type="audio/mpeg">
+                                                        مروگر شما پلیر را ساپورت نمیکنه
+                                                    </audio>
+                                                    <a href="<?php echo esc_attr(get_field('128-link')); ?>" id="download" class="release__buy open-modal">دانلود اهنگ با کیفیت 128</a>
+                                                    <a href="<?php echo esc_attr(get_field('320-link')); ?>" class="release__buy open-modal">دانلود اهنگ با کیفیت 320</a>
 
+                                                </div>
+                                                <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
+                                                    <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
+                                                </div>
+                                                <div class="scrollbar-track scrollbar-track-y show" style="display: none;">
+                                                    <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
+                                                </div>
+                                            </div>
+                                            <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
+                                                <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
+                                            </div>
+                                            <div class="scrollbar-track scrollbar-track-y show" style="display: none;">
+                                                <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
+                                            </div>
+                                        </div>
+                                        <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
+                                            <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
+                                        </div>
+                                        <div class="scrollbar-track scrollbar-track-y show" style="display: none;">
+                                            <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
+                                        </div>
                                     </div>
                                     <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
                                         <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
@@ -99,215 +148,80 @@ if (get_field('is_single')) {
                                         <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
                                     </div>
                                 </div>
-                                <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
-                                    <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
+                            </div>
+                        </div>
+                    <?php
+
+                    }
+                    if (get_field('is_album')) {
+                    ?>
+                        <div class="col-12">
+                            <div class="release">
+                                <div class="release__content">
+                                    <div class="release__cover">
+                                        <img src="<?php the_post_thumbnail_url() ?>" alt="">
+                                    </div>
+                                    <div class="release__stat">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z" />
+                                            </svg> 8 آهنگ</span>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z" />
+                                            </svg> 5000</span>
+                                    </div>
+                                    <a href="#modal-buy" class="release__buy open-modal">دانلود آلبوم</a>
                                 </div>
-                                <div class="scrollbar-track scrollbar-track-y show" style="display: none;">
-                                    <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
+
+                                <div class="release__list">
+                                    <ul class="main__list main__list--playlist main__list--dashbox">
+                                        <?php while (have_rows('album')) : the_row();
+                                            $song_name = get_sub_field('song-name');
+                                            $song_url = get_sub_field('song-url');
+
+
+                                        ?>
+                                            <li class="single-item">
+
+                                                <a data-playlist data-title="<?php echo $song_name ?>" data-artist="<?php echo get_category_name() ?>" data-img="<?php the_post_thumbnail_url() ?>" href="<?php echo $song_url ?>" class="single-item__cover">
+                                                    <img src="<?php the_post_thumbnail_url() ?>" alt="">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z" />
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z" />
+                                                    </svg>
+                                                </a>
+                                                <div class="single-item__title">
+                                                    <h4><a href="#">1. <?php echo $song_name;
+                                                                        ?></a></h4>
+                                                    <span><a href="#"><?php the_category() ?></a></span>
+                                                </div>
+
+                                                <a href="<?php echo $song_url ?>" class="single-item__export">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path>
+                                                    </svg>
+                                                </a>
+                                                <span class="single-item__time">3:06</span>
+                                            </li>
+
+                                        <?php endwhile ?>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
-                                <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
-                            </div>
-                            <div class="scrollbar-track scrollbar-track-y show" style="display: none;">
-                                <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
-                            </div>
                         </div>
-                        <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
-                            <div class="scrollbar-thumb scrollbar-thumb-x" style="width: 569px; transform: translate3d(0px, 0px, 0px);"></div>
-                        </div>
-                        <div class="scrollbar-track scrollbar-track-y show" style="display: none;">
-                            <div class="scrollbar-thumb scrollbar-thumb-y" style="height: 388px; transform: translate3d(0px, 0px, 0px);"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <?php
 
-}
-if (get_field('is_album')) {
-?>
-				<div class="col-12">
-					<div class="release">
-						<div class="release__content">
-							<div class="release__cover">
-								<img src="img/covers/TANHAM NAZAR.jpg" alt="">
-							</div>
-							<div class="release__stat">
-								<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z"/></svg> 8 آهنگ</span>
-								<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z"/></svg> 5000</span>
-							</div>
-							<a href="#modal-buy" class="release__buy open-modal">خرید آلبوم</a>
-						</div>
-
-						<div class="release__list">
-							<ul class="main__list main__list--playlist main__list--dashbox">
-								<li class="single-item">
-									<a data-playlist data-title="1. پشیمون میشی" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_01_Pashimun_Mishi.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">1. پشیمون میشی</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_01_Pashimun_Mishi.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">3:06</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="2. تنهام نذار" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_02_Tanham_Nazar.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">2. تنهام نذار</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_02_Tanham_Nazar.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">3:19</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="3. عشق منی" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_03_Eshghe_Mani.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">3. عشق منی</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_03_Eshghe_Mani.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">2:47</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="4. فراموشم نکن" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_04_Faramoosham_Nakon.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">4. فراموشم نکن</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_04_Faramoosham_Nakon.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">3:09</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="5. احساس" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_05_Ehsas.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">5. احساس</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_05_Ehsas.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">2:50</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="6. تقاص" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_06_Taghas.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">6. تقاص</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_06_Taghas.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">3:46</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="7. راز" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_07_Raaz.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">7. راز</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_07_Raaz.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">2:42</span>
-								</li>
-								<li class="single-item">
-									<a data-playlist data-title="8. سفر" data-artist="مهراد خمیری" data-img="img/covers/cover.svg" href="audio/Mehrad_Khamiri_-_08_Safar.mp3" class="single-item__cover">
-										<img src="img/covers/cover.svg" alt="">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/></svg>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16,2a3,3,0,0,0-3,3V19a3,3,0,0,0,6,0V5A3,3,0,0,0,16,2Zm1,17a1,1,0,0,1-2,0V5a1,1,0,0,1,2,0ZM8,2A3,3,0,0,0,5,5V19a3,3,0,0,0,6,0V5A3,3,0,0,0,8,2ZM9,19a1,1,0,0,1-2,0V5A1,1,0,0,1,9,5Z"/></svg>
-									</a>
-									<div class="single-item__title">
-										<h4><a href="#">8. سفر</a></h4>
-										<span><a href="artist.html">مهراد خمیری</a></span>
-									</div>
-									<a href="#" class="single-item__add">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg>
-									</a>
-									<a href="audio/Mehrad_Khamiri_-_08_Safar.mp3" class="single-item__export">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,14a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V15a1,1,0,0,0-2,0v4a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V15A1,1,0,0,0,21,14Zm-9.71,1.71a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l4-4a1,1,0,0,0-1.42-1.42L13,12.59V3a1,1,0,0,0-2,0v9.59l-2.29-2.3a1,1,0,1,0-1.42,1.42Z"></path></svg>
-									</a>
-									<span class="single-item__time">4:09</span>
-								</li>
-
-
-
-								
-
-
-							</ul>
-						</div>
-					</div>
-				</div>
-            <?php
-
-}
-    endwhile;
-endif;
-?>
+                    }
+                endwhile;
+            endif;
+            ?>
             <div class="col-12 col-lg-8">
                 <div class="article">
                     <!-- article content -->
                     <div class="article__content">
                         <h4>توضیحات بیشتر</h4>
-                        <?php the_content()?>
+                        <?php the_content() ?>
 
                     </div>
                     <!-- end article content -->
@@ -343,40 +257,41 @@ endif;
                     </div>
                     <!-- end title -->
                     <?php
-                    $related = get_posts( array(
-                            'category__in' => wp_get_post_categories($post->ID),
-                            'numberposts' => 4,
-                            'post__not_in' => array($post->ID) ) );
-                        if( $related ) foreach( $related as $post ) {
+                    $related = get_posts(array(
+                        'category__in' => wp_get_post_categories($post->ID),
+                        'numberposts' => 4,
+                        'post__not_in' => array($post->ID)
+                    ));
+                    if ($related) foreach ($related as $post) {
                         setup_postdata($post); ?>
 
 
-                    <div class="col-6 col-sm-4 col-lg-6">
-                        <div class="album album--sidebar">
-                            <div class="album__cover">
-                                <img src="<?php the_post_thumbnail_url()?>" alt="">
-                                <a href="<?php echo get_permalink()?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"></path>
-                                    </svg></a>
-                                <span class="album__stat">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                            <path d="M3.71,16.29a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21,1,1,0,0,0-.21.33,1,1,0,0,0,.21,1.09,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21,1,1,0,0,0,.21-1.09A1,1,0,0,0,3.71,16.29ZM7,8H21a1,1,0,0,0,0-2H7A1,1,0,0,0,7,8ZM3.71,11.29a1,1,0,0,0-1.09-.21,1.15,1.15,0,0,0-.33.21,1,1,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21,1.15,1.15,0,0,0,.21-.33.94.94,0,0,0,0-.76A1,1,0,0,0,3.71,11.29ZM21,11H7a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2ZM3.71,6.29a1,1,0,0,0-.33-.21,1,1,0,0,0-1.09.21,1.15,1.15,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21,1,1,0,0,0,1.09-.21,1.15,1.15,0,0,0,.21-.33.94.94,0,0,0,0-.76A1.15,1.15,0,0,0,3.71,6.29ZM21,16H7a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path>
-                                        </svg> 22</span>
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                            <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z"></path>
-                                        </svg> 5000</span>
-                                </span>
-                            </div>
-                            <div class="album__title">
-                                <h3><a href="#"><?php echo esc_html( get_field('short-title') );?></a></h3>
-                                <span><a href="artist.html"><?php the_category()?></a></span>
+                        <div class="col-6 col-sm-4 col-lg-6">
+                            <div class="album album--sidebar">
+                                <div class="album__cover">
+                                    <img src="<?php the_post_thumbnail_url() ?>" alt="">
+                                    <a href="<?php echo get_permalink() ?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"></path>
+                                        </svg></a>
+                                    <span class="album__stat">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M3.71,16.29a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21,1,1,0,0,0-.21.33,1,1,0,0,0,.21,1.09,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21,1,1,0,0,0,.21-1.09A1,1,0,0,0,3.71,16.29ZM7,8H21a1,1,0,0,0,0-2H7A1,1,0,0,0,7,8ZM3.71,11.29a1,1,0,0,0-1.09-.21,1.15,1.15,0,0,0-.33.21,1,1,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21,1.15,1.15,0,0,0,.21-.33.94.94,0,0,0,0-.76A1,1,0,0,0,3.71,11.29ZM21,11H7a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2ZM3.71,6.29a1,1,0,0,0-.33-.21,1,1,0,0,0-1.09.21,1.15,1.15,0,0,0-.21.33.94.94,0,0,0,0,.76,1.15,1.15,0,0,0,.21.33,1.15,1.15,0,0,0,.33.21,1,1,0,0,0,1.09-.21,1.15,1.15,0,0,0,.21-.33.94.94,0,0,0,0-.76A1.15,1.15,0,0,0,3.71,6.29ZM21,16H7a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path>
+                                            </svg> 22</span>
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z"></path>
+                                            </svg> 5000</span>
+                                    </span>
+                                </div>
+                                <div class="album__title">
+                                    <h3><a href="#"><?php echo esc_html(get_field('short-title')); ?></a></h3>
+                                    <span><a href="artist.html"><?php the_category() ?></a></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
                     <?php }
-                        wp_reset_postdata(); ?>
+                    wp_reset_postdata(); ?>
                 </div>
                 <!-- end releases -->
             </div>
@@ -384,7 +299,7 @@ endif;
     </div>
 </main>
 <!-- end main content -->
-<?php get_footer()?>
+<?php get_footer() ?>
 
 
 </body>
