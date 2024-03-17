@@ -27,3 +27,13 @@ function get_category_name() {
     }
     return false; // اگر دسته بندی وجود نداشته باشد، برگرداندن false
 }
+
+
+function get_tag_name() {
+    $tags = get_the_tags(); // بازگرداندن آرایه اطلاعات برچسب‌های پست
+    if ( ! empty( $tags ) ) { // چک کردن آیا آرایه خالی نیست
+        $first_tag = reset( $tags ); // بازگرداندن اولین برچسب از آرایه
+        return $first_tag->name; // برگرداندن نام اولین برچسب
+    }
+    return false; // اگر برچسب وجود نداشته باشد، برگرداندن false
+}
