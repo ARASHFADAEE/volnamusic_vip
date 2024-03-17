@@ -34,7 +34,7 @@
 			</div>
 
 			<nav class="header__nav">
-				<a href="profile.html">پنل کاربری</a>
+				<a href="<?php echo get_home_url()?>">صفحه اصلی</a>
 				<a href="about.html">درباره ما</a>
 				<a href="contacts.html">تماس با ما</a>
 			</nav>
@@ -55,10 +55,19 @@
 				
 
 				<div class="header__action header__action--signin">
-					<a class="header__action-btn" href="signin.html">
+					<?php if(!is_user_logged_in()){?>
+					<a class="header__action-btn" href="<?php echo get_home_url()?>/login">
 						<span>وارد شوید</span>
 						<svg style="transform: rotate(180deg);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"></path></svg>
 					</a>
+					<?php }else{?>
+						<a class="header__action-btn" href="<?php echo get_home_url()?>/panel">
+						<span>پنل کاربری</span>
+						<svg style="transform: rotate(180deg);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"></path></svg>
+					</a>
+
+					<?php }?>
+
 				</div>
 			</div>
 
