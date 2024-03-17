@@ -35,8 +35,8 @@
 
 			<nav class="header__nav">
 				<a href="<?php echo get_home_url()?>">صفحه اصلی</a>
-				<a href="about.html">درباره ما</a>
-				<a href="contacts.html">تماس با ما</a>
+				<a href="<?php echo get_home_url()?>/about-us">درباره ما</a>
+				<a href="<?php echo get_home_url()?>/contact-us">تماس با ما</a>
 			</nav>
 
 			<form action="#" class="header__search">
