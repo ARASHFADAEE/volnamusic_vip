@@ -6,60 +6,53 @@
                 <div class="footer__logo">
                     <img src="<?php echo get_template_directory_uri()?>/img/logo.svg" alt="">
                 </div>
-                <p class="footer__tagline">برچسب ضبط و رادیو اینترنتی,<br>موسیقی آنلاین با ولنا موزیک.</p>
+                <p class="footer__tagline">ولناموزیک، یک پلتفرم آنلاین شامل مجموعه‌ای از اهنگ‌های کلاسیک قدیمی انگلیسی و اهنگ‌های جدید ایرانی یا قدیمی به زبان فارسی است</p>
                 <div class="footer__links">
-                    <a href="mailto:support@volna.template"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <a href="mailto:info@volnamusic.ir"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M16.29,8.71a1,1,0,0,0,1.42,0l4-4a1,1,0,1,0-1.42-1.42L17,6.59l-1.29-1.3a1,1,0,0,0-1.42,1.42ZM21,8a1,1,0,0,0-1,1v9a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8.41L9.88,14.3a3,3,0,0,0,2.11.87,3.08,3.08,0,0,0,2.16-.9l1.72-1.72a1,1,0,1,0-1.42-1.42L12.7,12.88a1,1,0,0,1-1.4,0L5.41,7H11a1,1,0,0,0,0-2H5A3,3,0,0,0,2,8V18a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V9A1,1,0,0,0,21,8Z"></path>
-                        </svg> support@volna.template</a>
-                    <a href="tel:82345678900"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        </svg> info@volnamusic.ir</a>
+                    <a href="tel:09140065379"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M19.44,13c-.22,0-.45-.07-.67-.12a9.44,9.44,0,0,1-1.31-.39,2,2,0,0,0-2.48,1l-.22.45a12.18,12.18,0,0,1-2.66-2,12.18,12.18,0,0,1-2-2.66L10.52,9a2,2,0,0,0,1-2.48,10.33,10.33,0,0,1-.39-1.31c-.05-.22-.09-.45-.12-.68a3,3,0,0,0-3-2.49h-3a3,3,0,0,0-3,3.41A19,19,0,0,0,18.53,21.91l.38,0a3,3,0,0,0,2-.76,3,3,0,0,0,1-2.25v-3A3,3,0,0,0,19.44,13Zm.5,6a1,1,0,0,1-.34.75,1.05,1.05,0,0,1-.82.25A17,17,0,0,1,4.07,5.22a1.09,1.09,0,0,1,.25-.82,1,1,0,0,1,.75-.34h3a1,1,0,0,1,1,.79q.06.41.15.81a11.12,11.12,0,0,0,.46,1.55l-1.4.65a1,1,0,0,0-.49,1.33,14.49,14.49,0,0,0,7,7,1,1,0,0,0,.76,0,1,1,0,0,0,.57-.52l.62-1.4a13.69,13.69,0,0,0,1.58.46q.4.09.81.15a1,1,0,0,1,.79,1Z"></path>
-                        </svg> 8 234 567-89-00</a>
+                        </svg> 09140065379</a>
                 </div>
             </div>
 
             <div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-1 order-xl-2 offset-md-2 offset-lg-0">
-                <h6 class="footer__title">قالب ولنا</h6>
+                <h6 class="footer__title">دسترسی سریع</h6>
                 <div class="footer__nav">
                     <a href="about.html">درباره ما</a>
-                    <a href="profile.html">پروفایل من</a>
-                    <a href="pricing.html">خرید اشتراک</a>
-                    <a href="contacts.html">تماس باما</a>
+                    <a href="<?php echo get_home_url()?>/panel">پروفایل من</a>
+                    <a href="#">خرید اشتراک</a>
+                    <a href="<?php echo get_home_url()?>/contact-us">تماس باما</a>
                 </div>
             </div>
 
             <div class="col-12 col-md-8 col-lg-6 col-xl-4 order-3 order-lg-2 order-md-3 order-xl-3">
                 <div class="row">
                     <div class="col-12">
-                        <h6 class="footer__title">مرور کردن</h6>
+                        <h6 class="footer__title">محتوای ویژه</h6>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="footer__nav">
-                            <a href="artists.html">هنرمندان</a>
-                            <a href="releases.html">منتشر شده ها</a>
-                            <a href="events.html">رویداد ها</a>
-                            <a href="podcasts.html">پادکست ها</a>
+                            <a href="<?php echo get_home_url()?>/tag/music-for-programmers/">برنامه نویسان</a>
+                            <a href="<?php echo get_home_url()?>/tag/artists/">هنرمندان</a>
+                            <a href="<?php echo get_home_url()?>/tag/writers/">نویسندگان</a>
+                            <a href="<?php echo get_home_url()?>/tag/learning/">یادگیری</a>
                         </div>
                     </div>
 
-                    <div class="col-6">
-                        <div class="footer__nav">
-                            <a href="news.html">اخبار</a>
-                            <a href="store.html">فروشگاه</a>
-                            <a href="#">آهنگ</a>
-                            <a href="#">ویدیو</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-3 col-xl-2 order-2 order-lg-3 order-md-4 order-xl-4">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 order-2 order-lg-3 order-md-4 order-xl-4">
                 <h6 class="footer__title">پشتیبانی</h6>
                 <div class="footer__nav">
-                    <a href="privacy.html">حساب و صورتحساب</a>
-                    <a href="privacy.html">اشتراک ها و قیمت گذاری</a>
-                    <a href="privacy.html">دستگاه های پشتیبانی شده</a>
-                    <a href="privacy.html">دسترسی</a>
+                    <a href="<?php echo get_home_url()?>/privacy">حساب و صورتحساب</a>
+                    <a href="<?php echo get_home_url()?>/privacy">اشتراک ها و قیمت گذاری</a>
+                    <a href="<?php echo get_home_url()?>/privacy">دستگاه های پشتیبانی شده</a>
+                    <a href="<?php echo get_home_url()?>/privacy">دسترسی</a>
                 </div>
             </div>
         </div>
