@@ -17,8 +17,8 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/main.css">
 
 	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
-	<link rel="apple-touch-icon" href="icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri()?>/icon/favicon-32x32.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri()?>/icon/favicon-32x32.png">
 
     <?php wp_head()?>
 </head>
@@ -28,7 +28,7 @@
 <header class="header">
 		<div class="header__content">
 			<div class="header__logo">
-				<a href="index.html">
+				<a href="<?php echo get_home_url(); ?>">
 					<img src="<?php echo get_template_directory_uri()?>/img/logo.svg" alt="">
 				</a>
 			</div>
