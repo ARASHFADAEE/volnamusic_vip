@@ -33,7 +33,7 @@ function get_tag_name() {
     $tags = get_the_tags(); // بازگرداندن آرایه اطلاعات برچسب‌های پست
     if ( ! empty( $tags ) ) { // چک کردن آیا آرایه خالی نیست
         $first_tag = reset( $tags ); // بازگرداندن اولین برچسب از آرایه
-        return $first_tag->name; // برگرداندن نام اولین برچسب
+        return $first_tag[0]->name; // برگرداندن نام اولین برچسب
     }
     return false; // اگر برچسب وجود نداشته باشد، برگرداندن false
 }

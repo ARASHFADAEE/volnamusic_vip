@@ -11,7 +11,7 @@
 				<div class="col-12">
 					<ul class="breadcrumb">
 						<li class="breadcrumb__item"><a href="index.html">صفحه اصلی</a></li>
-						<li class="breadcrumb__item breadcrumb__item--active"><?php echo get_tag_name()?></li>
+						<li class="breadcrumb__item breadcrumb__item--active"><?php single_tag_title(); ?></li>
 					</ul>
 				</div>
 				<!-- end breadcrumb -->
@@ -19,7 +19,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title main__title--page">
-						<h1><?php echo get_tag_name()?></h1>
+						<h1><?php single_tag_title(); ?></h1>
 					</div>
 				</div>
 				<!-- end title -->
