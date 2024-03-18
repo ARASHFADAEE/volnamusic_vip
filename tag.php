@@ -20,6 +20,7 @@
 				<div class="col-12">
 					<div class="main__title main__title--page">
 						<h1><?php single_tag_title(); ?></h1>
+                        <p><?php echo  tag_description()?></p>
 					</div>
 				</div>
 				<!-- end title -->
