@@ -116,8 +116,8 @@
                                                         <source src="<?php echo esc_attr(get_field('320-link')); ?>" type="audio/mpeg">
                                                         مروگر شما پلیر را ساپورت نمیکنه
                                                     </audio>
-                                                    <a href="<?php echo esc_attr(get_field('128-link')); ?>" id="download" class="release__buy open-modal">دانلود اهنگ با کیفیت 128</a>
-                                                    <a href="<?php echo esc_attr(get_field('320-link')); ?>" class="release__buy open-modal">دانلود اهنگ با کیفیت 320</a>
+                                                    <a href="<?php echo esc_attr(get_field('128-link')); ?>"  class="release__buy">دانلود اهنگ با کیفیت 128</a>
+                                                    <a href="<?php echo esc_attr(get_field('320-link')); ?>" class="release__buy">دانلود اهنگ با کیفیت 320</a>
 
                                                 </div>
                                                 <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
