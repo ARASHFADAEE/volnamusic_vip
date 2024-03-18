@@ -177,6 +177,8 @@
                                         <?php while (have_rows('album')) : the_row();
                                             $song_name = get_sub_field('song-name');
                                             $song_url = get_sub_field('song-url');
+                                            
+                                            static $i=1;
 
 
                                         ?>
@@ -192,7 +194,7 @@
                                                     </svg>
                                                 </a>
                                                 <div class="single-item__title">
-                                                    <h4><a href="#">1. <?php echo $song_name;
+                                                    <h4><a href="#"><?php echo $i++ ;?>. <?php echo $song_name;
                                                                         ?></a></h4>
                                                     <span><a href="#"><?php the_category() ?></a></span>
                                                 </div>
