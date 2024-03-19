@@ -1,5 +1,5 @@
 
-<html lang="fa" >
+<html lang="<?php language_attributes()?>" >
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,12 +8,6 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/magnific-popup.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/select2.min.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/paymentfont.min.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/slider-radio.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/plyr.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/css/main.css">
 
 	<!-- Favicons -->
