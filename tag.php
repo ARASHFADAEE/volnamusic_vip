@@ -72,7 +72,6 @@
 endif;?>
 					</div>
 
-					<button class="main__load" type="button">بیشتر ببین</button>
 				</div>
 			</div>
 			<!-- end releases -->
