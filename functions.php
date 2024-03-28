@@ -57,3 +57,16 @@ function add_theme_scripts(){
 }
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
 
+
+
+function get_short_text($text){
+
+    if(strlen($text) >= 15) {
+        $text_short = substr($text, 0, 15) . "...";
+        echo $text_short;
+    }else{
+        echo $text;
+    }
+
+}
+add_action( 'init', 'get_short_text' );

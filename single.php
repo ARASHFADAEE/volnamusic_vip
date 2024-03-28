@@ -196,7 +196,7 @@
                                                     </svg>
                                                 </a>
                                                 <div class="single-item__title">
-                                                    <h4><a href="#"><?php echo $i++ ;?>. <?php echo $song_name;
+                                                    <h4><a href="#"><?php echo $i++ ;?>. <?php get_short_text($song_name);
                                                                         ?></a></h4>
                                                     <span><a href="#"><?php the_category() ?></a></span>
                                                 </div>
