@@ -2,7 +2,7 @@
 
 <?php get_template_part( 'partials/sidebar/sidebar', 'sidebar')?>
 
-    
+
     <!-- main content -->
 	<main class="main">
 		<div class="container-fluid">
@@ -71,6 +71,26 @@
     endwhile;
 endif;?>
 					</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><?php previous_posts_link( 'Previous' ); ?></li>
+        <?php
+        $args = array(
+            'post_type' => 'page', // نوع پست صفحه
+            'post_status' => 'publish',
+            'paged' => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1
+        );
+        
+        $query = new WP_Query( $args );
+        
+        // ایجاد صفحه بندی برای پست‌های صفحه‌تگ‌ها
+        echo paginate_links( array(
+            'total' => $query->max_num_pages
+        ) );
+        ?>
+        <li class="page-item"><?php next_posts_link( 'Next', $query->max_num_pages ); ?></li>
+    </ul>
+</nav>
 
 				</div>
 			</div>
