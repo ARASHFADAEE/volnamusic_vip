@@ -72,6 +72,42 @@ function get_short_text($text){
 add_action( 'init', 'get_short_text' );
 
 
+//add views music count
+
+function wpb_track_post_views($post_id) {
+    if (!is_single()) return;
+    if (empty($post_id)) {
+        global $post;
+        $post_id = $post->ID;
+    }
+    $views_key = 'wpb_post_views_count';
+    $views = get_post_meta($post_id, $views_key, true);
+    $views = ($views == '') ? 0 : $views;
+    $views++;
+    update_post_meta($post_id, $views_key, $views);
+}
+add_action('wp_head', 'wpb_track_post_views');
+
+function wpb_get_post_views($post_id = ''){
+    if (empty($post_id)) {
+        global $post;
+        $post_id = $post->ID;
+    }
+    $views_key = 'wpb_post_views_count';
+    $views = get_post_meta($post_id, $views_key, true);
+    $views = ($views == '') ? 0 : $views;
+    return $views;
+}
+
+//short code for get view count music
+
+function wpb_post_views_shortcode($atts){
+    ob_start();
+    $views = wpb_get_post_views();
+    echo $views ;
+    return ob_get_clean();
+}
+add_shortcode('post_views', 'wpb_post_views_shortcode');
 
 
 
