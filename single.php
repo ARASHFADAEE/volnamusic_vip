@@ -16,16 +16,15 @@
     <div class="player__content">
         <span class="player__track"><b class="player__title"><?php echo esc_html(get_field('short-title')); ?></b> – <span class="player__artist"><?php echo get_category_name() ?></span></span>
         <audio src="<?
-        if(get_field('is_single')){
-            echo esc_attr(get_field('320-link'));
-        }else{
-            $song_url = get_sub_field('song-url');
-            echo $song_url;
+                    if (get_field('is_single')) {
+                        echo esc_attr(get_field('320-link'));
+                    } else {
+                        $song_url = get_sub_field('song-url');
+                        echo $song_url;
+                    }
 
-        }
-        
-        
-        ?>" id="audio" controls></audio>
+
+                    ?>" id="audio" controls></audio>
     </div>
 </div>
 
@@ -59,7 +58,7 @@
             if (have_posts()) :
                 while (have_posts()) : the_post(); ?>
 
-                    
+
                     <?php
                     if (get_field('is_single')) {
                     ?>
@@ -75,7 +74,11 @@
                                             </svg>تک آهنگ</span>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                 <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z"></path>
-                                            </svg> 5000</span>
+                                            </svg> <?php echo do_shortcode('[post_views]') ?></span>
+                                    </div>
+                                    <div class="custom-favorite">
+                                        <?php echo do_shortcode('[favorite_button]
+') ?>
                                     </div>
 
                                 </div>
@@ -86,8 +89,8 @@
                                             <div class="scroll-content">
                                                 <div class="scroll-content">
                                                     <li class="single-item">
-                                                        <?php $single_track_name=get_field('short-title') ?>
-                                                        <a data-playlist="" data-title="<?php echo esc_html($single_track_name); ?>" data-artist="<?php echo get_category_name()?>" data-img="<?php the_post_thumbnail_url()?>" href="<?php echo esc_attr(get_field('320-link')); ?>" class="single-item__cover">
+                                                        <?php $single_track_name = get_field('short-title') ?>
+                                                        <a data-playlist="" data-title="<?php echo esc_html($single_track_name); ?>" data-artist="<?php echo get_category_name() ?>" data-img="<?php the_post_thumbnail_url() ?>" href="<?php echo esc_attr(get_field('320-link')); ?>" class="single-item__cover">
                                                             <img src="<?php the_post_thumbnail_url() ?>" alt="">
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                                 <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"></path>
@@ -116,7 +119,7 @@
                                                         <source src="<?php echo esc_attr(get_field('320-link')); ?>" type="audio/mpeg">
                                                         مروگر شما پلیر را ساپورت نمیکنه
                                                     </audio>
-                                                    <a href="<?php echo esc_attr(get_field('128-link')); ?>"  class="release__buy">دانلود اهنگ با کیفیت 128</a>
+                                                    <a href="<?php echo esc_attr(get_field('128-link')); ?>" class="release__buy">دانلود اهنگ با کیفیت 128</a>
                                                     <a href="<?php echo esc_attr(get_field('320-link')); ?>" class="release__buy">دانلود اهنگ با کیفیت 320</a>
 
                                                 </div>
@@ -161,16 +164,26 @@
                                     <div class="release__cover">
                                         <img src="<?php the_post_thumbnail_url() ?>" alt="">
                                     </div>
+                                    <?php
+                                    $album23 = get_field('album');
+
+                                    ?>
                                     <div class="release__stat">
                                         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                 <path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z" />
-                                            </svg> 8 آهنگ</span>
+                                            </svg> <?php echo count($album23) ?> آهنگ</span>
                                         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                 <path d="M20,13.18V11A8,8,0,0,0,4,11v2.18A3,3,0,0,0,2,16v2a3,3,0,0,0,3,3H8a1,1,0,0,0,1-1V14a1,1,0,0,0-1-1H6V11a6,6,0,0,1,12,0v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h3a3,3,0,0,0,3-3V16A3,3,0,0,0,20,13.18ZM7,15v4H5a1,1,0,0,1-1-1V16a1,1,0,0,1,1-1Zm13,3a1,1,0,0,1-1,1H17V15h2a1,1,0,0,1,1,1Z" />
-                                            </svg> <?php echo do_shortcode('[post_views]')?></span>
+                                            </svg> <?php echo do_shortcode('[post_views]') ?></span>
                                     </div>
-                                    <a href="#modal-buy" class="release__buy open-modal">دانلود آلبوم</a>
+                                    <div class="custom-favorite">
+                                        <?php echo do_shortcode('[favorite_button]
+') ?>
+                                    </div>                                    <a href="#modal-buy" class="release__buy open-modal">دانلود آلبوم</a>
                                 </div>
+
+
+
 
 
                                 <div class="release__list">
@@ -180,8 +193,8 @@
                                             $song_url = get_sub_field('song-url');
                                             $song_time_album = get_sub_field('song-time');
 
-                                            
-                                            static $i=1;
+
+                                            static $i = 1;
 
 
                                         ?>
@@ -197,8 +210,8 @@
                                                     </svg>
                                                 </a>
                                                 <div class="single-item__title">
-                                                    <h4><a href="#"><?php echo $i++ ;?>. <?php get_short_text($song_name);
-                                                                        ?></a></h4>
+                                                    <h4><a href="#"><?php echo $i++; ?>. <?php get_short_text($song_name);
+                                                                                            ?></a></h4>
                                                     <span><a href="#"><?php the_category() ?></a></span>
                                                 </div>
 
