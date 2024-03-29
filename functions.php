@@ -70,3 +70,9 @@ function get_short_text($text){
 
 }
 add_action( 'init', 'get_short_text' );
+
+
+
+
+
+
