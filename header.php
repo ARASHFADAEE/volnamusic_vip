@@ -1,4 +1,3 @@
-
 <html lang="<?php language_attributes()?>" >
 <?php
 
@@ -23,7 +22,28 @@ if(is_page(29)){
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri()?>/icon/favicon-32x32.png" sizes="32x32">
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri()?>/icon/favicon-32x32.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ12MSH91W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-YQ12MSH91W');
+</script>
+	
+	<script type="text/javascript">
+  ["keydown","touchmove","touchstart","mouseover"].forEach(function(v){window.addEventListener(v,function(){if(!window.isGoftinoAdded){window.isGoftinoAdded=1;var i="BKy7Nx",d=document,g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}})});
+</script>
+	
+	
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K6SMZ4DC');</script>
+<!-- End Google Tag Manager -->
     <?php wp_head()?>
 </head>
 <body>
@@ -36,11 +56,17 @@ if(is_page(29)){
 					<img src="<?php echo get_template_directory_uri()?>/img/logo.svg" alt="">
 				</a>
 			</div>
-
 			<nav class="header__nav">
-				<a href="<?php echo get_home_url()?>">صفحه اصلی</a>
-				<a href="<?php echo get_home_url()?>/about-us">درباره ما</a>
-				<a href="<?php echo get_home_url()?>/contact-us">تماس با ما</a>
+				            <?php wp_nav_menu(array(
+'menu_class'=>'',
+	'container'=>''
+	
+
+	
+
+));?>
+
+
 			</nav>
 
 			<form method="get" action="<?php echo  get_home_url()?>" class="header__search" >

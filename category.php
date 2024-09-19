@@ -15,12 +15,22 @@
 
         <!-- releases -->
         <section class="row row--grid">
-            <!-- title -->
-            <div class="col-12">
-                <div class="main__title">
-                    <h2>منتشر شده ها از :    <?php the_category()?> </h2>
-                </div>
+			
+<!-- title -->
+<div class="col-12" style='margin-top: 30px;'>
+    <div class="row">
+        <div class="col-md-9 order-md-1 order-2">
+            <div class="main__title">
+                <h2><?php the_category() ?></h2>
+                <?php echo category_description(); ?>
             </div>
+        </div>
+        
+        <div class="col-md-3 order-md-2 order-1 text-center">
+            <img src='<?php echo z_taxonomy_image_url() ?>' class="img-fluid rounded" style="max-width: 300px; border-radius: 20px !important;">
+        </div>
+    </div>
+</div>
             <!-- end title -->
             <?php
 

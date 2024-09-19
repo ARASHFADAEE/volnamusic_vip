@@ -238,6 +238,14 @@
                 <div class="article">
                     <!-- article content -->
                     <div class="article__content">
+						    <div class="banner-calassads" style="
+    display: flex;
+    justify-content: center;
+">
+        <a rel="nofollow" href='https://ariascode.ir/'>
+                                        <img width="800px" height="auto" class="baner-img-ads" src="https://volnamusic.ir/wp-content/uploads/2024/09/New-Project-1.webp">
+        </a>
+                                </div>
                         <h4>توضیحات بیشتر</h4>
                         <?php the_content() ?>
 

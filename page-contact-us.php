@@ -65,7 +65,7 @@
 					<ul class="contacts__list">
 						<li dir="ltr"><a href="tel:+18092345678">+98 09140065379</a></li>
 						<li dir="ltr"><a href="mailto:support@volna.template">info@volnamusic.ir</a></li>
-						<li><a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="open-map">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</a></li>
+						<li><a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="open-map">برای تماس با ما فرم مقابل را تکمیل کنید</a></li>
 					</ul>
 
 				</div>
